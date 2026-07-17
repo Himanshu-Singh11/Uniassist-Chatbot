@@ -143,7 +143,7 @@ def format_program_details(name: str, info: dict, level: str) -> str:
         
     return response
 
-def check_specific_program(query_lower: str) -> str or None:
+def check_specific_program(query_lower: str) -> str | None:
     """Check if the user query refers to a specific academic program"""
     # Graduate programs first (longer strings)
     for prog_name, info in graduate_programs.items():
