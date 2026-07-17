@@ -1,37 +1,46 @@
-# 🎓 UniAssist - AI-Powered University Assistant Chatbot
+# 🎓 UniAssist — AI-Powered University Assistant Chatbot
 
-UniAssist is a modern, responsive, and professional AI-powered chatbot designed to help students, parents, and visitors find information about the university easily. It provides answers regarding admissions, courses, fees, placements, scholarships, and general campus infrastructure.
+UniAssist is a modern, professional AI-powered chatbot built with **Python + Streamlit**, designed to help students, parents, and visitors instantly find information about the university — admissions, courses, fees, placements, scholarships, campus life, and more.
 
 ---
 
 ## 🎯 Key Features
 
-- **💬 Modern Native Chat Interface**: Built using Streamlit's native `st.chat_input` and `st.chat_message` components with custom role avatars (`🎓` for UniAssist, `👤` for the user).
-- **🎛️ Interactive Welcome Dashboard**: Features a 2x2 grid of container cards allowing users to click and search topics (Admissions, Courses, Campus Life, Financial Support) instantly with a single click.
-- **🇮🇳 Localized Indian Context**: Mapped completely to the Indian education ecosystem:
-  - Currencies formatted in Indian Rupees (₹).
-  - Prerequisites aligned with Class 12th Boards, JEE Main, CAT, and GATE.
-  - Placements linked to top recruiters like TCS, Infosys, Wipro, and Cognizant.
-  - Location and directions set to Knowledge Park, Noida, Uttar Pradesh.
-  - Financial aid options integrated with the National Scholarship Portal (NSP) and Vidya Lakshmi education loans.
-- **⚡ General Q&A Matching**: Pre-configured with dynamic keyword matching to handle common questions:
-  - **Campus Details**: 150-acre green campus size and Metro connectivity details.
-  - **Sports**: Facilities including a Cricket Stadium, Football Ground, Basketball courts, and Gym.
-  - **Campus Amenities**: Canteens, mess schedules, 24/7 medical clinics, central library, and 1 Gbps Wi-Fi connectivity.
-  - **Security**: Strict anti-ragging measures and 24/7 CCTV surveillance.
+- **💬 Native Chat Interface** — Built with Streamlit's `st.chat_input` and `st.chat_message` with custom role avatars (`🎓` UniAssist · `👤` User).
+- **🎛️ Interactive Welcome Dashboard** — 2×2 grid of clickable cards (Admissions, Courses, Campus Life, Financial Support) that instantly populate the chat.
+- **🔍 Smart Keyword Matching** — Handles natural-language queries for:
+  - Admissions, eligibility, deadlines, documents
+  - Undergraduate & postgraduate programs (B.Tech, MBA, MCA, M.Tech…)
+  - Fees, scholarships, education loans, NSP / Vidya Lakshmi
+  - Placements, recruiters (TCS, Infosys, Wipro, Cognizant), packages
+  - Campus amenities: canteen, hostel, gym, library, clinic, Wi-Fi
+  - Sports: Cricket Stadium, Football Ground, Basketball courts
+  - Safety: anti-ragging policy, 24/7 CCTV surveillance
+- **🇮🇳 India-Localised Context** — ₹ currency, JEE/CAT/GATE references, NSP portal, Noida campus directions & Metro connectivity.
+- **⚡ Zero-Config VS Code Run** — Press the **▶️ Play button** in VS Code and the chatbot opens in your browser automatically — no extra setup.
 
 ---
 
 ## 📁 Project Structure
 
-```bash
+```
 Uniassist-Chatbot/
-├── app.py           # Streamlit app interface, styling, and keyword routing logic
-├── Courses.py       # Indian university programs, facilities, events, and aid database
-├── requirements.txt # Project Python dependencies (streamlit, etc.)
-├── .gitignore       # Exclusions for virtual environments, caches, and system files
-└── Logo/
-    └── uniassist_logo.jpg # App branding & logo icon
+│
+├── app.py                  # Main Streamlit app — UI, styling & response logic
+│
+├── data/
+│   ├── __init__.py
+│   └── courses.py          # University programs, facilities, events & financial aid data
+│
+├── assets/
+│   └── logo.jpg            # App branding & logo
+│
+├── .vscode/
+│   └── launch.json         # VS Code Run & Debug configuration
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
 ```
 
 ---
@@ -39,7 +48,8 @@ Uniassist-Chatbot/
 ## ⚙️ Setup & Installation
 
 ### Prerequisites
-Make sure you have Python 3.9+ installed on your system.
+- Python **3.9+**
+- Git
 
 ### 1. Clone the Repository
 ```bash
@@ -47,10 +57,15 @@ git clone https://github.com/Himanshu-Singh11/Uniassist-Chatbot.git
 cd Uniassist-Chatbot
 ```
 
-### 2. Create and Activate a Virtual Environment
+### 2. Create & Activate a Virtual Environment
 ```bash
+# macOS / Linux
 python3 -m venv .venv
 source .venv/bin/activate
+
+# Windows
+python -m venv .venv
+.venv\Scripts\activate
 ```
 
 ### 3. Install Dependencies
@@ -62,8 +77,46 @@ pip install -r requirements.txt
 
 ## 🚀 Running the Chatbot
 
-Launch the application locally with the following command:
+### Option A — VS Code (Recommended)
+Open the project in VS Code and press the **▶️ Play button** (or `F5`).  
+The chatbot will launch silently and open automatically in your browser at `http://localhost:8501`.
+
+### Option B — Terminal
+```bash
+python app.py
+```
+
+### Option C — Direct Streamlit CLI
 ```bash
 streamlit run app.py
 ```
-Open your browser and navigate to `http://localhost:8501` to chat with UniAssist!
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Language | Python 3.9+ |
+| Web Framework | Streamlit |
+| Styling | Custom CSS (injected via `st.markdown`) |
+| Data | Pure Python dictionaries (`data/courses.py`) |
+| Version Control | Git + GitHub |
+
+---
+
+## 📸 Screenshots
+
+> Launch the app and open `http://localhost:8501` to see UniAssist in action.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
