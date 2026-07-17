@@ -22,7 +22,7 @@ if __name__ == "__main__" and os.environ.get("STREAMLIT_ACTIVE") != "1":
 
 import streamlit as st
 import re
-from Courses import undergraduate_programs, graduate_programs, university_facilities, campus_events, financial_aid
+from data.courses import undergraduate_programs, graduate_programs, university_facilities, campus_events, financial_aid
 
 
 
@@ -601,7 +601,7 @@ def main():
     # Header section
     col1, col2 = st.columns([1, 4])
     with col1:
-        st.image('./Logo/uniassist_logo.jpg', width=110)
+        st.image('./assets/logo.jpg', width=110)
     with col2:
         st.title("UniAssist Chatbot")
         st.subheader("Your AI-Powered University Assistant")
@@ -610,7 +610,7 @@ def main():
 
     # Sidebar section
     with st.sidebar:
-        st.image('./Logo/uniassist_logo.jpg', width=130)
+        st.image('./assets/logo.jpg', width=130)
         st.markdown("## 🎯 Quick Help")
         st.markdown("Click any topic below to ask UniAssist instantly:")
         
