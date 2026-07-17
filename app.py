@@ -736,18 +736,21 @@ def main():
 
 # Run the application
 if __name__ == "__main__":
+    import os
     import sys
     import subprocess
 
-    if "streamlit" not in sys.argv[0]:
+    if os.environ.get("STREAMLIT_ACTIVE") != "1":
         # Launched with plain Python (e.g. VS Code Play button).
-        # Spawn Streamlit as a separate child process to avoid
-        # "Runtime instance already exists" errors.
+        # Set an env flag so when Streamlit re-executes this file
+        # it goes to the else branch and calls main() normally.
+        env = os.environ.copy()
+        env["STREAMLIT_ACTIVE"] = "1"
         sys.exit(subprocess.call([
             sys.executable, "-m", "streamlit", "run", __file__,
             "--server.port=8501",
             "--browser.gatherUsageStats=false"
-        ]))
+        ], env=env))
     else:
-        # Launched correctly via: streamlit run app.py
+        # Already inside a Streamlit execution — run the app normally.
         main()
