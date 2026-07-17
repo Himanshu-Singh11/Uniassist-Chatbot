@@ -749,7 +749,8 @@ if __name__ == "__main__":
         sys.exit(subprocess.call([
             sys.executable, "-m", "streamlit", "run", __file__,
             "--server.port=8501",
-            "--browser.gatherUsageStats=false"
+            "--browser.gatherUsageStats=false",
+            "--logger.level=error"
         ], env=env))
     else:
         # Already inside a Streamlit execution — run the app normally.
