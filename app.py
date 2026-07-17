@@ -24,6 +24,14 @@ import streamlit as st
 import re
 from data.courses import undergraduate_programs, graduate_programs, university_facilities, campus_events, financial_aid
 
+# Must be the very first Streamlit call — at module level
+st.set_page_config(
+    page_title="UniAssist - University Assistant Chatbot",
+    page_icon="🎓",
+    layout="centered",
+    initial_sidebar_state="expanded"
+)
+
 
 
 # University Database Configuration
@@ -500,14 +508,6 @@ def get_help_response() -> str:
 
 def main():
     """Main UniAssist application"""
-    # Page config must be the first Streamlit call
-    st.set_page_config(
-        page_title="UniAssist - University Assistant Chatbot",
-        page_icon="🎓",
-        layout="centered",
-        initial_sidebar_state="expanded"
-    )
-
     # Initialize chat history
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
