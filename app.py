@@ -12,7 +12,8 @@ if __name__ == "__main__" and os.environ.get("STREAMLIT_ACTIVE") != "1":
          "--server.port=8501",
          "--browser.gatherUsageStats=false",
          "--logger.level=error"],
-        env=_env
+        env=_env,
+        stdout=subprocess.DEVNULL  # suppress all startup prints
     ))
 
 # UniAssist - AI-Powered University Assistant Chatbot
