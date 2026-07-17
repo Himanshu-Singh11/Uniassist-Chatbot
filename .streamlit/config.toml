@@ -1,8 +1,0 @@
-[browser]
-gatherUsageStats = false
-
-[logger]
-level = "error"
-
-[server]
-fileWatcherType = "none"
