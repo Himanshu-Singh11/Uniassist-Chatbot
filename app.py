@@ -1,4 +1,19 @@
-
+# Bootstrap guard — must be FIRST, before any other imports.
+# When VS Code runs `python app.py`, this block relaunches the file
+# via `streamlit run` and exits immediately — before Streamlit is
+# ever imported, so zero warnings appear in the terminal.
+import os, sys
+if __name__ == "__main__" and os.environ.get("STREAMLIT_ACTIVE") != "1":
+    import subprocess
+    _env = os.environ.copy()
+    _env["STREAMLIT_ACTIVE"] = "1"
+    sys.exit(subprocess.call(
+        [sys.executable, "-m", "streamlit", "run", __file__,
+         "--server.port=8501",
+         "--browser.gatherUsageStats=false",
+         "--logger.level=error"],
+        env=_env
+    ))
 
 # UniAssist - AI-Powered University Assistant Chatbot
 # A friendly, conversational AI designed to help students, parents, and visitors
@@ -735,23 +750,6 @@ def main():
     """, unsafe_allow_html=True)
 
 # Run the application
+# (Bare-Python relaunch is handled at the top of the file before any imports.)
 if __name__ == "__main__":
-    import os
-    import sys
-    import subprocess
-
-    if os.environ.get("STREAMLIT_ACTIVE") != "1":
-        # Launched with plain Python (e.g. VS Code Play button).
-        # Set an env flag so when Streamlit re-executes this file
-        # it goes to the else branch and calls main() normally.
-        env = os.environ.copy()
-        env["STREAMLIT_ACTIVE"] = "1"
-        sys.exit(subprocess.call([
-            sys.executable, "-m", "streamlit", "run", __file__,
-            "--server.port=8501",
-            "--browser.gatherUsageStats=false",
-            "--logger.level=error"
-        ], env=env))
-    else:
-        # Already inside a Streamlit execution — run the app normally.
-        main()
+    main()
