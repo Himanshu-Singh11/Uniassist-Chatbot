@@ -177,29 +177,6 @@ campus_events = {
 
 # Financial aid and scholarship information (Indian context)
 financial_aid = {
-    "scholarships": [
-        {
-            "name": "Merit-cum-Means Scholarship",
-            "amount": "Up to ₹50,000 per year",
-            "requirements": "Class 12th score above 85% and annual family income below ₹6 Lakhs",
-            "deadline": "August 31",
-            "renewable": True
-        },
-        {
-            "name": "Post-Matric Scholarship Scheme (Govt. of India)",
-            "amount": "Full Tuition Fee Waiver",
-            "requirements": "Belonging to SC/ST/OBC category, family income below ₹2.5 Lakhs",
-            "deadline": "September 30",
-            "renewable": True
-        },
-        {
-            "name": "National Scholarship Portal (NSP) Schemes",
-            "amount": "Up to ₹20,000 per year",
-            "requirements": "Applied through NSP, satisfying specific state/central guidelines",
-            "deadline": "October 31",
-            "renewable": True
-        }
-    ],
     "work_study": {
         "description": "Part-time on-campus library assistance, computer lab administration, and administrative jobs",
         "hourly_rate": "₹150-250 per hour",

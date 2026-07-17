@@ -498,24 +498,20 @@ def get_help_response() -> str:
     
     return response
 
-
-
-
-
-# Initialize session state for chat history
-if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
-
-# Page configuration
-st.set_page_config(
-    page_title="UniAssist - University Assistant Chatbot",
-    page_icon="🎓",
-    layout="centered",
-    initial_sidebar_state="expanded"
-)
-
 def main():
     """Main UniAssist application"""
+    # Page config must be the first Streamlit call
+    st.set_page_config(
+        page_title="UniAssist - University Assistant Chatbot",
+        page_icon="🎓",
+        layout="centered",
+        initial_sidebar_state="expanded"
+    )
+
+    # Initialize chat history
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
+
     # Inject Custom Premium Styles
     custom_css = """
     <style>
@@ -746,7 +742,7 @@ def main():
     st.markdown("""
     <div style='text-align: center; color: #666; font-size: 0.85rem; padding-bottom: 2rem;'>
         <p>UniAssist - Making university information accessible and friendly! 🎓</p>
-        <p>Contact Office of Admissions: admissions@university.edu | Phone: (555) 123-4567</p>
+        <p>📧 admissions@university.edu.in &nbsp;|&nbsp; 📞 +91 120 4567890</p>
     </div>
     """, unsafe_allow_html=True)
 
