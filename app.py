@@ -736,4 +736,11 @@ def main():
 
 # Run the application
 if __name__ == "__main__":
-    main()
+    import sys
+    from streamlit.web import cli as stcli
+    
+    if "streamlit" not in sys.argv[0]:
+        sys.argv = ["streamlit", "run", sys.argv[0]]
+        sys.exit(stcli.main())
+    else:
+        main()
